@@ -12,7 +12,7 @@ int loadCatalog(const char* file_name,string rel,vector<string>& names,vector<st
 	infile >> test1;
 	infile >> test2;
 	
-	while( test1 != "begin" || test2 != rel ) // will break when both matches
+	while( test1 != "BEGIN" || test2 != rel ) // will break when both matches
 	{
 		if ( infile.eof() == -1 )
 		{
@@ -26,7 +26,7 @@ int loadCatalog(const char* file_name,string rel,vector<string>& names,vector<st
 	istringstream ss; // wrapper string stream
 	infile >> test;
 
-	while( test != "end" )
+	while( test != "END" )
 	{
 		ss.str(test);
 		ss >> att_name >> att_type;

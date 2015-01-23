@@ -41,6 +41,8 @@ private:
 
 	// Pass the relation to parse the catalog for that relation
 	// Record bits are constructed in the order of fields in catalog file
+
+	friend class page;
 	int makeRecord(vector< tuple<char,string> > myatts); 
 
 	// returns the value of a given field in the record

@@ -5,6 +5,8 @@
 * Utilities for reading and writing to the underlying storage array of Page object 
 * and not to the disk i.e in memory.
 **/
+friend class page;
+friend class record;
 
 short readShort(char* block,short offset);
 

@@ -1,5 +1,6 @@
 #ifndef PAGE_H
 #define PAGE_H
+#include "globals.h"
 #include "record.h"
 
 /**
@@ -23,6 +24,7 @@ typedef struct Slot slot;
 class Page
 {
 private:
+	friend class record;
 	PageId blockId; // pages get pageId in their allocation order, not persistent quantity
 
 	/* These quatities are persistent on the memory block */
