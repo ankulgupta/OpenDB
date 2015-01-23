@@ -1,40 +1,53 @@
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include "catalog.h"
 #include "../globals.h"
 
 
-int loadCatalog(const char* file_name,string rel,vector<string>& names,vector<string>& types)
+int loadCatalog(char* file_name,string rel,vector<string>& names,vector<string>& types)
 {
 	ifstream infile(file_name); // input file stream
-	string test1,test2,test,att_name,att_type;
+	string test1,test2,test;
 	infile >> test1;
 	infile >> test2;
 	
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 9f6778e5464e0a15cc7aecbc668c9de72d3295a0
 	while( test1 != "BEGIN" || test2 != rel ) // will break when both matches
 	{
 		if ( infile.eof() == -1 )
-		{
-			cout << "Not a valid Catalog file" << endl;
+		{	#ifdef verbose
+				cout << "Not a valid Catalog file" << endl;
+			#endif
 			return NOT_DONE;
 		}
 		infile >> test1;
 		infile >> test2;
 	}
 
+<<<<<<< HEAD
 	istringstream ss; // wrapper string stream
 	infile >> test;
 
 	while( test != "END" )
+=======
+	infile >> test; // for reading the Tables/marks.bin line
+	
+	while( true )
+>>>>>>> 9f6778e5464e0a15cc7aecbc668c9de72d3295a0
 	{
-		ss.str(test);
-		ss >> att_name >> att_type;
-		names.push_back(att_name);
-		types.push_back(att_type);
-		infile >> test;
+		infile >> test1 >> test2;	
+		if ( test1 == "END" )
+		{
+			break;
+		}
+		names.push_back(test1);
+		types.push_back(test2);
 	}
 	return DONE;
+	
 }
 
 
